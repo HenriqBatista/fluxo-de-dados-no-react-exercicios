@@ -20,19 +20,46 @@ const Container = styled.div`
 
 function App() {
   const [pageFlow, setPageFlow] = useState(1);
+  const [inputNome, setNome] = useState("");
+  const [inputFoto, setFoto] = useState("");
+  const [inputImage, setImagem] = useState("");
+  const [inputTitulo, setTitulo] = useState("");
+  const [inputDescricao, setDescricao] = useState("");
+  const [post,setPost] = useState({})
   return (
     <>
       <GlobalStyle />
       <Container>
         <aside>
-          <Header />
+          <Header inputFoto={inputFoto} inputNome={inputNome} />
           {pageFlow === 1 ? (
-            <FormularioLogin setPageFlow={setPageFlow} />
+            <FormularioLogin
+              setPageFlow={setPageFlow}
+              inputFoto={inputFoto}
+              inputNome={inputNome}
+              setFoto={setFoto}
+              setNome={setNome}
+            />
           ) : (
-            <FormularioPostagem />
+            <FormularioPostagem
+              inputImage={inputImage}
+              inputDescricao={inputDescricao}
+              inputTitulo={inputTitulo}
+              setImagem={setImagem}
+              setTitulo={setTitulo}
+              setDescricao={setDescricao}
+              post={post}
+              setPost={setPost}
+            />
           )}
         </aside>
-        <TelaDaPostagem />
+        <TelaDaPostagem
+          inputImage={inputImage}
+          inputDescricao={inputDescricao}
+          inputTitulo={inputTitulo}
+          post={post}
+          setPost={setPost}
+        />
       </Container>
     </>
   );
